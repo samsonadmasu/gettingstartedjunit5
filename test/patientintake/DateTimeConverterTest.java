@@ -9,17 +9,12 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DateTimeConverterTest {
-    private ClinicCalendar calendar;
-    private DateTimeConverter dateTimeConverter;
-    @BeforeEach
-    void init() {
-        calendar = new ClinicCalendar(LocalDate.of(2018, 8, 26));
-    }
 
     @Test
-    void convertStringToDateTime() {
-        LocalDateTime result = DateTimeConverter.convertStringToDateTime("today 1:00 pm",LocalDate.of(2018, 8, 26));
-        assertEquals(result,LocalDateTime.of(2018, 8, 26,13,0));
+    void convertStringToDateTimeCorrectlly() {
+        LocalDate today = LocalDate.of(2018, 8, 26);
+        LocalDateTime result = DateTimeConverter.convertStringToDateTime("today 1:00 pm", today);
+        assertEquals(result,LocalDateTime.of(2018, 8, 26,13,0),"Failed to convert failed string to expected date time : today passed was :" +today);
     }
 
     @Test
